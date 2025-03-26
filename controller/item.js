@@ -1,4 +1,4 @@
-import item from "../model/item";
+const Item = require("../model/item");
 
 export const addItem = async (req, res) => {
     try {
@@ -10,7 +10,7 @@ export const addItem = async (req, res) => {
         }
 
         // Create a new item
-        const newItem = new item({ abc, def, ghi });
+        const newItem = new Item({ abc, def, ghi });
         await newItem.save();
 
         res.status(201).json({ message: "Item added successfully", item: newItem });

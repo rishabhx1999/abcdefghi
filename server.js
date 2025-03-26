@@ -25,7 +25,7 @@ app.use(cors({
         }
     },
     methods : ['GET','POST','PUT','DELETE'],
-    allowedHeaders : '',
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials : true
 }));
 app.use(express.json());
@@ -33,9 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/api/v1', itemRoutes);
-
-app.use(express.json());
-// app.listen(PORT, () => {
-//     console.log('listening on port ' , PORT)
-// })
+app.listen(PORT, () => {
+    console.log('listening on port ' , PORT)
+})
 
