@@ -28,6 +28,8 @@ app.use(cors({
     allowedHeaders : '',
     credentials : true
 }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/api/v1', itemRoutes);
