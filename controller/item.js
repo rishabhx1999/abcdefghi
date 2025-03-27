@@ -6,7 +6,7 @@ export const addItem = async (req, res) => {
         const { abc, def, ghi } = req.body;
 
         // Validate request body
-        if (!abc || !def || !ghi) {
+        if (!abc) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
@@ -15,7 +15,6 @@ export const addItem = async (req, res) => {
         const newItem = new Item({ abc, def, ghi });
         await newItem.save();
         console.log('Item saved successfully');
-
         res.status(201).json({ message: "Item added successfully", item: newItem });
     } catch (error) {
         console.error('Error occurred:', error);
