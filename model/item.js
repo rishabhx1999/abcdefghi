@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
     abc : {
         type: String,
+        unique: true
     },
     def : {
         type: String,
