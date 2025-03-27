@@ -6,7 +6,10 @@ const cookieParser = require('cookie-parser');
 const itemRoutes = require('./routes/item');
 
 mongoose.connect('mongodb+srv://rb14101999bti:rb14101999bti@cluster0.i2qoby4.mongodb.net/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true })
-.then(() => {console.log('DB Connected')})
+.then(() => {
+    console.log('DB Connected');
+    Item.syncIndexes(); // Sync the indexes
+})
 .catch((err) => {
     console.log(err);
 });

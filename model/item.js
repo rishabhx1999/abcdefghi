@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
     abc : {
         type: String,
-        unique: true
+        unique: true, 
     },
     def : {
         type: String,
@@ -15,5 +15,8 @@ const itemSchema = new Schema({
 }, {
     timestamps : true
 });
+
+// Define the unique index explicitly for 'abc'
+itemSchema.index({ abc: 1 }, { unique: true });
 
 module.exports = mongoose.model('Item', itemSchema);
