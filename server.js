@@ -13,10 +13,13 @@ const itemRoutes = require('./routes/item');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = ['https://ecommerce-site-danish.netlify.app',
-    'https://abcdefghi-357aalqga-rishabh-bansals-projects-738eae69.vercel.app',
-    'https://abcdefghi-nine.vercel.app'];
-app.use(cors({
+const allowedOrigins = [
+    'https://ecommerce-site-danish.netlify.app',
+    'https://ecommerce-store-eosin-chi.vercel.app',
+    'http://localhost:5173'
+];
+
+const corsOption = {
     origin : function(origin, callback){
         if(allowedOrigins.indexOf(origin) !== -1 || !origin){
             callback(null, true)
@@ -27,9 +30,14 @@ app.use(cors({
     methods : ['GET','POST','PUT','DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials : true
-}));
+};
+
+
+app.use(cors(corsOption));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 app.use('/api/v1', itemRoutes);
