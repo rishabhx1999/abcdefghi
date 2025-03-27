@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 mongoose.connect('mongodb+srv://rb14101999bti:rb14101999bti@cluster0.i2qoby4.mongodb.net/')
 .then(() => {console.log('DB Connected')})
