@@ -40,6 +40,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
+app.get('/', (req, res) => {
+    res.send('Hello Express!');
+});
+
 app.use('/api/v1', itemRoutes);
 app.listen(PORT, () => {
     console.log('listening on port ' , PORT)
