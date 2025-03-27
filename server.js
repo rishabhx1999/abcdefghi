@@ -3,14 +3,15 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const itemRoutes = require('./routes/item');
 
-mongoose.connect('mongodb+srv://rb14101999bti:rb14101999bti@cluster0.i2qoby4.mongodb.net/')
+mongoose.connect('mongodb+srv://rb14101999bti:rb14101999bti@cluster0.i2qoby4.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {console.log('DB Connected')})
 .catch((err) => {
     console.log(err);
 });
 
-const itemRoutes = require('./routes/item');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -46,6 +47,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1', itemRoutes);
+
 app.listen(PORT, () => {
     console.log('listening on port ' , PORT)
 })
